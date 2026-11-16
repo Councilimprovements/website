@@ -1,0 +1,348 @@
+/* =====================================================================
+   STYLE SHEET FOR THE WHOLE SITE
+   Every page uses this one file. Change something here and it changes
+   everywhere.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. COLOURS AND SIZES - change these to restyle the whole site.
+   Each colour is a six-character code. Search online for "colour picker"
+   to find new codes. Keep text dark on light backgrounds so it stays
+   easy to read.
+   --------------------------------------------------------------------- */
+:root {
+  --white: #ffffff;          /* main page background */
+  --offwhite: #f1f5fb;       /* very pale blue background for alternate sections */
+  --ink: #0d1b2a;            /* near-black navy, main text */
+  --muted: #45525f;          /* softer grey-blue for secondary text */
+  --accent: #0b3d91;         /* THE BRAND BLUE (buttons, links, bands) */
+  --accent-dark: #082c6b;    /* darker blue, used when hovering over buttons */
+  --heading-bar: #dbe8fa;    /* light blue bar behind the main heading of every page */
+  --navy: #0a2540;           /* deep blue for the top bar and footer */
+  --line: #d5dde8;           /* thin divider lines */
+  --placeholder: #e3e8ee;    /* soft grey for photo placeholder blocks */
+  --error: #a4161a;          /* form error messages */
+
+  --max-width: 1200px;       /* widest the content is allowed to be */
+  --gap: 24px;               /* space between columns */
+  --section-space: clamp(56px, 8vw, 112px); /* space above and below sections */
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------------------------------------------------------------------
+   2. BASICS - sensible defaults for every page
+   --------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 18px;            /* large, readable body text */
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--white);
+}
+img { display: block; max-width: 100%; }
+/* Headings: the first letter of every word is capitalised automatically */
+h1, h2, h3 { line-height: 1.15; margin: 0 0 0.5em; font-weight: 700; letter-spacing: -0.01em; text-transform: capitalize; }
+
+/* The company name always appears in BOLD CAPITALS, wherever it is used */
+[data-site="companyName"] { font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; }
+h1 { font-size: clamp(2.1rem, 5.2vw, 3.9rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.6rem, 3.2vw, 2.4rem); }
+h3 { font-size: 1.25rem; }
+p { margin: 0 0 1em; }
+ul, ol { margin: 0 0 1em; padding-left: 1.2em; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { color: var(--accent-dark); }
+
+/* A clear outline when someone moves around with the keyboard */
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.band :focus-visible, .site-footer :focus-visible, .topbar :focus-visible { outline-color: var(--white); }
+
+/* "Skip to main content" link: hidden until a keyboard user tabs to it */
+.skip-link {
+  position: absolute; left: 12px; top: -80px; z-index: 100;
+  background: var(--ink); color: var(--white); padding: 12px 18px;
+}
+.skip-link:focus { top: 12px; color: var(--white); }
+
+/* Hides something visually but keeps it for screen readers */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------------
+   3. LAYOUT - the centred container and the 12-column grid
+   --------------------------------------------------------------------- */
+.container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+.section { padding: var(--section-space) 0; }
+.section-alt { background: var(--offwhite); }
+.section-tight { padding: calc(var(--section-space) / 2) 0; }
+
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+.grid > * { grid-column-end: span 12; min-width: 0; }   /* phones: everything full width */
+.align-center { align-items: center; }
+
+@media (min-width: 640px) {                          /* tablets: two columns */
+  .col-3, .col-4, .col-6 { grid-column-end: span 6; }
+}
+@media (min-width: 960px) {                          /* desktops: full 12-column grid */
+  .col-3 { grid-column-end: span 3; }
+  .col-4 { grid-column-end: span 4; }
+  .col-5 { grid-column-end: span 5; }
+  .col-6 { grid-column-end: span 6; }
+  .col-7 { grid-column-end: span 7; }
+  .col-8 { grid-column-end: span 8; }
+  .start-2 { grid-column-start: 2; }                 /* "start" classes leave empty columns to the left */
+  .start-7 { grid-column-start: 7; }
+  .start-8 { grid-column-start: 8; }
+  .start-9 { grid-column-start: 9; }
+}
+
+.narrow { max-width: 760px; }                        /* comfortable reading width */
+.eyebrow {                                           /* small uppercase label above headings */
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+}
+.lead { font-size: clamp(1.15rem, 2vw, 1.35rem); line-height: 1.55; color: var(--muted); }
+.section-head { margin-bottom: 40px; }
+
+/* ---------------------------------------------------------------------
+   4. BUTTONS
+   --------------------------------------------------------------------- */
+.btn {
+  display: inline-block; min-height: 48px; padding: 12px 24px;
+  font: inherit; font-size: 1rem; font-weight: 600; line-height: 1.4;
+  text-align: center; text-decoration: none; cursor: pointer;
+  color: var(--white); background: var(--accent);
+  border: 2px solid var(--accent); border-radius: 2px;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: var(--white); }
+.btn-outline { background: transparent; color: var(--accent); }
+.btn-outline:hover { background: var(--accent); color: var(--white); }
+.btn-light { background: var(--white); color: var(--accent-dark); border-color: var(--white); }
+.btn-light:hover { background: var(--offwhite); border-color: var(--offwhite); color: var(--accent-dark); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+
+/* ---------------------------------------------------------------------
+   5. TOP BAR AND HEADER (the same on every page)
+   --------------------------------------------------------------------- */
+.topbar { background: var(--navy); color: var(--white); font-size: 0.85rem; }
+.topbar .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 40px; }
+.topbar p { margin: 0; }
+.topbar-contact { display: flex; gap: 20px; flex-wrap: wrap; }
+.topbar a { color: var(--white); text-decoration: none; padding: 8px 0; display: inline-block; }
+.topbar a:hover { text-decoration: underline; }
+
+.site-header { border-bottom: 1px solid var(--line); background: var(--white); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; padding-top: 16px; padding-bottom: 16px; }
+.brand { font-size: 1.25rem; color: var(--accent); text-decoration: none; padding: 8px 0; }
+.brand:hover { color: var(--accent-dark); }
+
+.site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; }
+.site-nav a {
+  display: inline-block; padding: 10px 0; color: var(--ink); text-decoration: none;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  border-bottom: 2px solid transparent;
+}
+.site-nav a:hover, .site-nav a[aria-current="page"] { border-bottom-color: var(--accent); color: var(--accent); }
+.site-nav a.btn { color: var(--white); padding: 10px 18px; min-height: 44px; border: 2px solid var(--accent); letter-spacing: 0.06em; }
+.site-nav a.btn:hover { color: var(--white); border-color: var(--accent-dark); }
+
+/* The "Menu" button only appears on small screens */
+.nav-toggle {
+  display: none; min-height: 44px; padding: 8px 16px; font: inherit; font-size: 0.85rem;
+  font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--white); color: var(--ink); border: 2px solid var(--ink); border-radius: 2px; cursor: pointer;
+}
+@media (max-width: 1039px) {
+  .js .nav-toggle { display: inline-block; }
+  .site-nav { width: 100%; }
+  .js .site-nav { display: none; }
+  .js .site-nav.is-open { display: block; }
+  .site-nav ul { flex-direction: column; align-items: stretch; gap: 0; padding: 8px 0; }
+  .site-nav li { border-top: 1px solid var(--line); }
+  .site-nav a { display: block; padding: 14px 0; border-bottom: 0; }
+  .site-nav a.btn { margin: 14px 0 6px; }
+}
+
+/* ---------------------------------------------------------------------
+   6. HERO (the big opening statement and photo)
+   --------------------------------------------------------------------- */
+.hero { padding: 0; }
+.hero h1 { max-width: 17em; }
+.hero .lead { max-width: 40em; }
+.hero-media { margin-top: clamp(36px, 5vw, 64px); }
+/* The light blue bar behind the main heading at the top of every page */
+.page-hero { padding: clamp(40px, 6vw, 80px) 0 clamp(32px, 4vw, 56px); background: var(--heading-bar); }
+.page-hero .lead, .hero-bar .lead { color: #2f3b47; }
+.hero-bar { background: var(--heading-bar); padding: clamp(40px, 7vw, 88px) 0 clamp(36px, 5vw, 64px); }
+.page-hero h1 { max-width: 18em; font-size: clamp(2rem, 4.4vw, 3.2rem); }
+
+/* ---------------------------------------------------------------------
+   7. PHOTOS
+   Photos are never stretched. "object-fit: cover" crops them neatly to
+   fill the box. The "focus-" classes choose which part stays visible.
+   --------------------------------------------------------------------- */
+.media { position: relative; overflow: hidden; background: var(--placeholder); aspect-ratio: 4 / 3; margin: 0; }
+.media img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.5s ease; }
+.media-wide { aspect-ratio: 16 / 9; }
+.media-hero { aspect-ratio: 4 / 3; }
+@media (min-width: 760px) { .media-hero { aspect-ratio: 2 / 1; } }
+.media-tall { aspect-ratio: 3 / 4; }
+.media-square { aspect-ratio: 1 / 1; }
+.focus-top img { object-position: center 25%; }
+.focus-left img { object-position: 25% center; }
+.focus-right img { object-position: 75% center; }
+a .media:hover img, a:hover .media img { transform: scale(1.03); }
+
+/* Grey placeholder block, used where no real photo is available yet */
+.placeholder {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  aspect-ratio: 16 / 9; padding: 24px; background: var(--placeholder);
+  color: #34414e; font-size: 0.95rem; font-weight: 600; border: 1px dashed #8d99a6;
+}
+
+/* Photo grid on the home page and projects page */
+.photo-grid { display: grid; gap: var(--gap); grid-template-columns: 1fr; }
+@media (min-width: 640px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) {
+  .photo-grid { grid-template-columns: repeat(3, 1fr); }
+  .photo-grid .feature { grid-row: span 2; aspect-ratio: auto; }  /* one tall photo */
+}
+
+/* ---------------------------------------------------------------------
+   8. CARDS AND TILES
+   --------------------------------------------------------------------- */
+.tile { display: block; height: 100%; color: var(--ink); text-decoration: none; background: var(--white); border: 1px solid var(--line); }
+.tile:hover { color: var(--ink); border-color: var(--accent); }
+.tile-body { padding: 22px 22px 26px; }
+.tile-body p { color: var(--muted); font-size: 1rem; margin: 0; }
+.tile-more { display: inline-block; margin-top: 14px; color: var(--accent); font-weight: 600; font-size: 0.95rem; }
+
+.card { background: var(--white); border: 1px solid var(--line); padding: 28px; height: 100%; }
+.card p:last-child { margin-bottom: 0; }
+
+/* Large teaser cards leading to other pages */
+.teaser { display: flex; flex-direction: column; justify-content: space-between; min-height: 240px; height: 100%; padding: 32px; text-decoration: none; background: var(--offwhite); color: var(--ink); border: 1px solid var(--line); transition: background-color 0.2s, color 0.2s; }
+.teaser:hover { background: var(--accent); color: var(--white); border-color: var(--accent); }
+.teaser h3 { font-size: 1.7rem; }
+.teaser span { font-weight: 600; }
+
+/* Outcome statements strip */
+.outcome { border-top: 3px solid var(--accent); padding-top: 20px; }
+.outcome p { color: var(--muted); margin: 0; }
+.small-note { font-size: 0.92rem; color: var(--muted); }
+
+/* Testimonials */
+.quote { margin: 0; padding: 0; }
+.quote blockquote { margin: 0 0 20px; font-size: clamp(1.25rem, 2.6vw, 1.8rem); line-height: 1.4; font-weight: 500; }
+.quote-small blockquote { font-size: 1.15rem; }
+.quote figcaption { color: var(--muted); font-size: 1rem; }
+
+/* PLACEHOLDER TEXT is shown in italics, so it is easy to spot and replace.
+   This covers draft testimonials, the unconfirmed assurance list
+   and the draft notes on the legal pages. */
+.is-placeholder, .is-placeholder blockquote { font-style: italic; }
+
+/* ---------------------------------------------------------------------
+   9. CASE STUDIES, SECTORS, STEPS AND LISTS
+   --------------------------------------------------------------------- */
+.case { padding: 48px 0; border-top: 1px solid var(--line); }
+.case:first-of-type { border-top: 0; padding-top: 0; }
+.case dl { margin: 0; }
+.case dt { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-top: 18px; }
+.case dd { margin: 4px 0 0; }
+
+.split { padding: 48px 0; border-top: 1px solid var(--line); }
+.split:first-of-type { border-top: 0; padding-top: 0; }
+.split h3 { font-size: 1rem; margin-top: 1.2em; }
+
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+.steps li { counter-increment: step; position: relative; padding: 28px 0 28px 76px; border-top: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps li::before {
+  content: counter(step); position: absolute; left: 0; top: 26px;
+  width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
+  background: var(--accent); color: var(--white); font-weight: 700; font-size: 1.25rem; border-radius: 50%;
+}
+.steps h3 { margin-bottom: 6px; }
+.steps p { margin: 0; color: var(--muted); }
+
+.check-list { list-style: none; margin: 0; padding: 0; }
+.check-list li { padding: 12px 0; border-top: 1px solid var(--line); }
+.check-list li:first-child { border-top: 0; }
+
+.link-card { display: block; height: 100%; padding: 28px; background: var(--white); border: 1px solid var(--line); border-top: 3px solid var(--accent); }
+.link-card p { color: var(--muted); font-size: 1rem; }
+.link-card a { font-weight: 600; }
+
+/* ---------------------------------------------------------------------
+   10. CALL-TO-ACTION BAND AND FOOTER (the same on every page)
+   --------------------------------------------------------------------- */
+.band { background: var(--accent); color: var(--white); padding: clamp(48px, 7vw, 88px) 0; }
+.band h2 { color: var(--white); max-width: 16em; }
+.band p { max-width: 38em; }
+.band a:not(.btn) { color: var(--white); }
+
+.site-footer { background: var(--navy); color: #dbe3ee; padding: 56px 0 32px; font-size: 0.98rem; }
+.site-footer h2 { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); margin-bottom: 14px; }
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer a { color: var(--white); display: inline-block; padding: 5px 0; }
+.footer-brand { font-size: 1.2rem; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+.footer-bottom { margin-top: 40px; padding-top: 24px; border-top: 1px solid #2c4664; font-size: 0.88rem; }
+.footer-bottom p { margin: 0 0 4px; }
+
+/* ---------------------------------------------------------------------
+   11. ENQUIRY FORM
+   --------------------------------------------------------------------- */
+.form-field { margin-bottom: 22px; }
+.form-field label, .form-field legend { display: block; font-weight: 600; margin-bottom: 6px; }
+.optional { font-weight: 400; color: var(--muted); }
+.form-field input[type="text"], .form-field input[type="email"], .form-field input[type="tel"],
+.form-field select, .form-field textarea {
+  width: 100%; min-height: 50px; padding: 11px 14px; font: inherit; color: var(--ink);
+  background: var(--white); border: 2px solid #6b7279; border-radius: 2px;
+}
+.form-field textarea { min-height: 160px; resize: vertical; }
+.form-field [aria-invalid="true"] { border-color: var(--error); }
+.field-error { color: var(--error); font-weight: 600; font-size: 0.95rem; margin: 6px 0 0; }
+.check-row { display: flex; gap: 12px; align-items: flex-start; }
+.check-row input { width: 26px; height: 26px; margin: 3px 0 0; flex: none; accent-color: var(--accent); }
+.check-row label { font-weight: 400; margin: 0; }
+.form-status { padding: 16px 20px; margin-bottom: 24px; border: 2px solid var(--error); color: var(--error); font-weight: 600; }
+.form-status[hidden] { display: none; }
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; } /* spam trap, hidden from people */
+.contact-list { list-style: none; padding: 0; margin: 0 0 24px; }
+.contact-list li { padding: 14px 0; border-top: 1px solid var(--line); }
+.contact-list strong { display: block; font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+/* Legal pages (privacy, accessibility): comfortable long-form reading */
+.prose h2 { margin-top: 1.8em; font-size: 1.5rem; }
+.prose h3 { margin-top: 1.4em; }
+
+/* ---------------------------------------------------------------------
+   12. GENTLE MOTION
+   Sections fade in softly as you scroll. This only happens when
+   JavaScript is working, and is switched off completely for anyone who
+   has asked their device to reduce motion.
+   --------------------------------------------------------------------- */
+.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .media img, .btn, .teaser { transition: none; }
+  a .media:hover img, a:hover .media img { transform: none; }
+}
+
+/* Tidy print-out */
+@media print {
+  .topbar, .site-nav, .nav-toggle, .band, .skip-link { display: none; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+.contact-list + .card { height: auto; }   /* response-time box on the contact page */

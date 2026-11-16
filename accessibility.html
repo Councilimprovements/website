@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <!-- ===== PAGE SETTINGS (not visible on the page) ===== -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- The title shows in the browser tab and in search results.
+       The company name is added to the end automatically from config.js. -->
+  <title>Accessibility statement</title>
+  <!-- The description shows under the title in search results. -->
+  <meta name="description" content="How accessible this website is, what to do if you have difficulty using it, and how to contact us.">
+
+  <!-- Open Graph tags: control how the page looks when shared on social media or in messages.
+       Replace yourdomain with your real web address before launch. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Accessibility statement">
+  <meta property="og:description" content="How accessible this website is, what to do if you have difficulty using it, and how to contact us.">
+  <meta property="og:url" content="https://www.yourdomain.co.uk/accessibility.html">
+  <meta property="og:image" content="https://www.yourdomain.co.uk/images/10.jpg">
+  <meta property="og:locale" content="en_GB">
+
+  <!-- The style sheet that controls how every page looks -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== SKIP LINK: lets keyboard users jump straight to the page content ===== -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===== TOP BAR: slim strip at the very top of the page ===== -->
+  <div class="topbar">
+    <div class="container">
+      <p class="topbar-note">Murals and public art for public spaces across the UK</p>
+    </div>
+  </div>
+
+  <!-- ===== HEADER AND NAVIGATION (identical on every page) ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Home"><span data-site="companyName">Council Improvements</span></a>
+      <!-- This button only appears on phones and small screens -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="sectors.html">Sectors</a></li>
+          <li><a href="how-we-work.html">How we work</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a class="btn" href="contact.html">Request a proposal</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== MAIN PAGE CONTENT STARTS HERE ===== -->
+  <main id="main">
+
+    <!-- ===== PAGE HEADING ===== -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Accessibility</p>
+        <h1>Accessibility statement</h1>
+        <p class="lead narrow">We want everyone to be able to use this website.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container prose narrow">
+        <!-- DRAFT TEMPLATE: the paragraph below (in italics) must be deleted once the owner has checked this statement. -->
+        <p class="is-placeholder">Draft template. The site owner must check this statement and update it after the site has been tested. Delete this paragraph once that is done.</p>
+        <p>This statement applies to the <span data-site="companyName">Council Improvements</span> website.</p>
+
+        <h2>Using this website</h2>
+        <p>We have designed this site so that you should be able to:</p>
+        <ul>
+          <li>zoom in up to 400% without text spilling off the screen</li>
+          <li>navigate the whole site using only a keyboard</li>
+          <li>skip straight to the main content of any page</li>
+          <li>use the site with a screen reader</li>
+          <li>read text that has good contrast against its background</li>
+          <li>use the site with animations reduced, if your device is set to reduce motion</li>
+        </ul>
+        <p>We have also tried to keep the wording as simple as possible.</p>
+
+        <h2>How accessible this website is</h2>
+        <p>We aim to meet the Web Content Accessibility Guidelines (WCAG) version 2.2 at level AA.</p>
+        <p>This website has not yet been formally tested against these guidelines.</p>
+
+        <h2>Known issues</h2>
+        <ul>
+          <li>Links to other websites open in a new tab. Each of these links says so for screen reader users.</li>
+        </ul>
+
+        <h2>Feedback and contact</h2>
+        <p>If you have trouble using any part of this website, or need information in a different format, please tell us.</p>
+        <p>Contact us using our <a href="contact.html">enquiry form</a>.</p>
+
+        <h2>Preparation of this statement</h2>
+        <p>This statement was prepared in November 2026.</p>
+      </div>
+    </section>
+
+  </main>
+  <!-- ===== MAIN PAGE CONTENT ENDS HERE ===== -->
+
+  <!-- ===== FOOTER (identical on every page; details filled in from config.js) ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="grid">
+        <div class="col-4">
+          <p class="footer-brand" data-site="companyName">Council Improvements</p>
+          <p>Murals and public art that improve public spaces and help communities take pride in them.</p>
+        </div>
+        <div class="col-4">
+          <h2>Explore</h2>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="sectors.html">Sectors</a></li>
+            <li><a href="how-we-work.html">How we work</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-4">
+          <h2>Get in touch</h2>
+          <ul>
+            <li><a href="contact.html">Send us an enquiry</a></li>
+            <li><span data-needs="address" hidden>Based in <span data-site="address"></span>. </span>Working across the UK.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span data-year></span> <span data-site="companyName">Council Improvements</span>.<span data-needs="companyNumber" hidden> Company number: <span data-site="companyNumber"></span>.</span></p>
+        <p><a href="privacy.html">Privacy policy</a> &nbsp;|&nbsp; <a href="accessibility.html">Accessibility statement</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS =====
+       config.js holds the company details and must load first.
+       main.js then fills those details into the page. -->
+  <script src="config.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- ANALYTICS: this site has no cookies and no tracking.
+       If you decide to add analytics later, the code would go here, just above this line's closing body tag.
+       If you do, update the privacy policy and consider whether you need a cookie banner. -->
+</body>
+</html>

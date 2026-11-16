@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <!-- ===== PAGE SETTINGS (not visible on the page) ===== -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- The title shows in the browser tab and in search results.
+       The company name is added to the end automatically from config.js. -->
+  <title>Contact us and request a proposal</title>
+  <!-- The description shows under the title in search results. -->
+  <meta name="description" content="Request a mural proposal for your wall or site. Send us an enquiry. We work with councils, schools, hospitals, BIDs and housing providers across the UK.">
+
+  <!-- Open Graph tags: control how the page looks when shared on social media or in messages.
+       Replace yourdomain with your real web address before launch. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact us and request a proposal">
+  <meta property="og:description" content="Request a mural proposal for your wall or site. Send us an enquiry. We work with councils, schools, hospitals, BIDs and housing providers across the UK.">
+  <meta property="og:url" content="https://www.yourdomain.co.uk/contact.html">
+  <meta property="og:image" content="https://www.yourdomain.co.uk/images/10.jpg">
+  <meta property="og:locale" content="en_GB">
+
+  <!-- The style sheet that controls how every page looks -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== SKIP LINK: lets keyboard users jump straight to the page content ===== -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===== TOP BAR: slim strip at the very top of the page ===== -->
+  <div class="topbar">
+    <div class="container">
+      <p class="topbar-note">Murals and public art for public spaces across the UK</p>
+    </div>
+  </div>
+
+  <!-- ===== HEADER AND NAVIGATION (identical on every page) ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Home"><span data-site="companyName">Council Improvements</span></a>
+      <!-- This button only appears on phones and small screens -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="sectors.html">Sectors</a></li>
+          <li><a href="how-we-work.html">How we work</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a class="btn" href="contact.html">Request a proposal</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== MAIN PAGE CONTENT STARTS HERE ===== -->
+  <main id="main">
+
+    <!-- ===== PAGE HEADING ===== -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h1>Request a proposal.</h1>
+        <p class="lead narrow">Tell us about your wall or site. There is no obligation, and you do not need a finished brief to get in touch.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid">
+
+          <!-- ===== ENQUIRY FORM =====
+               The form is sent to the address set as formEndpoint in config.js.
+               The address below (after action=) is only a fallback for visitors
+               without JavaScript. See README.txt, "Connecting the enquiry form". -->
+          <div class="col-7">
+            <h2>Enquiry form</h2>
+            <p class="small-note">Fields are required unless marked optional.</p>
+
+            <!-- A message appears here if something goes wrong when sending -->
+            <div class="form-status" id="form-status" role="alert" tabindex="-1" hidden></div>
+
+            <form id="enquiry-form" action="https://formspree.io/f/YOUR_FORM_ID" method="post">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required aria-required="true" data-error="Enter your name." aria-describedby="name-error">
+              <p class="field-error" id="name-error" hidden></p>
+            </div>
+            <div class="form-field">
+              <label for="organisation">Organisation</label>
+              <input type="text" id="organisation" name="organisation" autocomplete="organization" required aria-required="true" data-error="Enter the name of your organisation." aria-describedby="organisation-error">
+              <p class="field-error" id="organisation-error" hidden></p>
+            </div>
+            <div class="form-field">
+              <label for="role">Role</label>
+              <input type="text" id="role" name="role" autocomplete="organization-title" required aria-required="true" data-error="Enter your role or job title." aria-describedby="role-error">
+              <p class="field-error" id="role-error" hidden></p>
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" data-error="Enter your email address." aria-describedby="email-error">
+              <p class="field-error" id="email-error" hidden></p>
+            </div>
+            <div class="form-field">
+              <label for="phone">Phone <span class="optional">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" aria-describedby="phone-error">
+              <p class="field-error" id="phone-error" hidden></p>
+            </div>
+            <div class="form-field">
+              <label for="sector">Sector</label>
+              <select id="sector" name="sector" required aria-required="true" data-error="Choose the sector that fits best." aria-describedby="sector-error">
+                <option value="">Please choose</option>
+                <option>Council or town centre</option>
+                <option>School or college</option>
+                <option>Hospital or NHS site</option>
+                <option>BID or business</option>
+                <option>Housing provider</option>
+                <option>Other</option>
+              </select>
+              <p class="field-error" id="sector-error" hidden></p>
+            </div>
+            <div class="form-field">
+              <label for="location">Location of the wall or site</label>
+              <input type="text" id="location" name="location" required aria-required="true" data-error="Enter the location of the wall or site." aria-describedby="location-error">
+              <p class="field-error" id="location-error" hidden></p>
+            </div>
+            <div class="form-field">
+              <label for="size">Approximate size <span class="optional">(optional)</span></label>
+              <input type="text" id="size" name="size" aria-describedby="size-error">
+              <p class="field-error" id="size-error" hidden></p>
+            </div>
+            <div class="form-field">
+              <label for="timescale">Ideal timescale</label>
+              <select id="timescale" name="timescale" required aria-required="true" data-error="Choose your ideal timescale." aria-describedby="timescale-error">
+                <option value="">Please choose</option>
+                <option>As soon as possible</option>
+                <option>Within 3 months</option>
+                <option>In 3 to 6 months</option>
+                <option>In 6 to 12 months</option>
+                <option>Not sure yet</option>
+              </select>
+              <p class="field-error" id="timescale-error" hidden></p>
+            </div>
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required aria-required="true" data-error="Tell us a little about your project." aria-describedby="message-error"></textarea>
+              <p class="field-error" id="message-error" hidden></p>
+            </div>
+
+              <!-- Consent tick box, linking to the privacy policy -->
+            <div class="form-field">
+              <div class="check-row">
+                <input type="checkbox" id="consent" name="consent" value="yes" required aria-required="true" data-error="Tick the box to confirm we can use your details to reply." aria-describedby="consent-error">
+                <label for="consent">I agree that my details can be used to reply to this enquiry, as described in the <a href="privacy.html">privacy policy</a>.</label>
+              </div>
+              <p class="field-error" id="consent-error" hidden></p>
+            </div>
+
+              <!-- Spam trap ("honeypot"): hidden from people, but automated spam fills it in and is rejected -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="website-field">Leave this field empty</label>
+              <input type="text" id="website-field" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
+
+              <!-- Hidden settings for the form service: email subject and the page shown after sending -->
+              <input type="hidden" name="_subject" value="New website enquiry">
+              <input type="hidden" name="_next" value="">
+
+              <button class="btn" type="submit">Send enquiry</button>
+            </form>
+          </div>
+
+          <!-- ===== WHAT HAPPENS NEXT ===== -->
+          <div class="col-4 start-9">
+            <h2>What happens next</h2>
+
+            <!-- Shown only if JavaScript is switched off -->
+            <noscript><p><strong>Please use the enquiry form to contact us.</strong></p></noscript>
+
+            <p>We read every enquiry. If your site looks like a good fit, we will arrange a conversation and a site visit.</p>
+            <p>We work with organisations across the UK.<span data-needs="address" hidden> We are based in <span data-site="address"></span>.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <!-- ===== MAIN PAGE CONTENT ENDS HERE ===== -->
+
+  <!-- ===== FOOTER (identical on every page; details filled in from config.js) ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="grid">
+        <div class="col-4">
+          <p class="footer-brand" data-site="companyName">Council Improvements</p>
+          <p>Murals and public art that improve public spaces and help communities take pride in them.</p>
+        </div>
+        <div class="col-4">
+          <h2>Explore</h2>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="sectors.html">Sectors</a></li>
+            <li><a href="how-we-work.html">How we work</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-4">
+          <h2>Get in touch</h2>
+          <ul>
+            <li><a href="contact.html">Send us an enquiry</a></li>
+            <li><span data-needs="address" hidden>Based in <span data-site="address"></span>. </span>Working across the UK.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span data-year></span> <span data-site="companyName">Council Improvements</span>.<span data-needs="companyNumber" hidden> Company number: <span data-site="companyNumber"></span>.</span></p>
+        <p><a href="privacy.html">Privacy policy</a> &nbsp;|&nbsp; <a href="accessibility.html">Accessibility statement</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS =====
+       config.js holds the company details and must load first.
+       main.js then fills those details into the page. -->
+  <script src="config.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- ANALYTICS: this site has no cookies and no tracking.
+       If you decide to add analytics later, the code would go here, just above this line's closing body tag.
+       If you do, update the privacy policy and consider whether you need a cookie banner. -->
+</body>
+</html>
